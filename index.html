@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🚀 Advanced System Utility App - README</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap');
-        
         :root {
             --primary: #00d9ff;
             --secondary: #7c3aed;
             --accent: #f59e0b;
-            --success: #10b981;
-            --danger: #ef4444;
+            --bg-dark: #0a0f1a;
+            --bg-card: #111827;
         }
         
         * {
@@ -22,26 +21,18 @@
             scrollbar-color: var(--primary) #1e293b;
         }
         
-        *::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        *::-webkit-scrollbar-track {
-            background: #1e293b;
-        }
-        
-        *::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 4px;
-        }
+        *::-webkit-scrollbar { width: 8px; }
+        *::-webkit-scrollbar-track { background: #1e293b; }
+        *::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
         
         body {
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0f1a 0%, #0f172a 50%, #1e1b4b 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
         }
         
-        .font-mono {
-            font-family: 'Fira Code', monospace;
-        }
+        .font-mono { font-family: 'Fira Code', monospace; }
         
         .gradient-text {
             background: linear-gradient(135deg, #00d9ff, #7c3aed, #f59e0b);
@@ -50,70 +41,70 @@
             background-clip: text;
         }
         
-        .glow {
-            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
-        }
-        
-        .glow-hover:hover {
-            box-shadow: 0 0 30px rgba(0, 217, 255, 0.5);
+        .glow-box {
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.15), 0 0 60px rgba(124, 58, 237, 0.1);
         }
         
         .card {
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+            background: linear-gradient(145deg, rgba(17, 24, 39, 0.95), rgba(30, 41, 59, 0.9));
+            border: 1px solid rgba(0, 217, 255, 0.25);
+            border-radius: 16px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 217, 255, 0.2);
         }
         
         .card:hover {
             border-color: rgba(0, 217, 255, 0.5);
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.2);
+            transform: translateY(-2px);
         }
         
         .badge {
             display: inline-flex;
             align-items: center;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
             font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .badge:hover {
-            transform: scale(1.05);
-        }
-        
-        .table-container {
-            overflow-x: auto;
+            transition: all 0.3s;
         }
         
         .styled-table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
         }
         
         .styled-table th,
         .styled-table td {
-            padding: 0.75rem 1rem;
+            padding: 14px 18px;
             text-align: left;
-            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.15);
         }
         
         .styled-table th {
             background: rgba(0, 217, 255, 0.1);
-            font-weight: 600;
+            font-weight: 700;
+            color: #00d9ff;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
-        .styled-table tr:hover {
+        .styled-table tr:hover td {
             background: rgba(0, 217, 255, 0.05);
         }
         
+        .styled-table td {
+            color: #cbd5e1;
+        }
+        
         .code-block {
-            background: #0f172a;
-            border: 1px solid rgba(0, 217, 255, 0.3);
-            border-radius: 0.5rem;
-            padding: 1rem;
-            overflow-x: auto;
+            background: linear-gradient(135deg, #0f172a, #1e1b4b);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            border-radius: 12px;
+            padding: 20px;
             position: relative;
+            overflow: hidden;
         }
         
         .code-block::before {
@@ -122,48 +113,57 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
+            height: 4px;
             background: linear-gradient(90deg, #00d9ff, #7c3aed, #f59e0b);
         }
         
         .terminal-box {
-            background: #0a0a0a;
+            background: #000000;
             border: 2px solid #333;
-            border-radius: 0.75rem;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
         
         .terminal-header {
-            background: linear-gradient(90deg, #1e1e1e, #2d2d2d);
-            padding: 0.5rem 1rem;
+            background: linear-gradient(90deg, #2d2d2d, #3d3d3d);
+            padding: 12px 16px;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 8px;
         }
         
         .terminal-dot {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
         }
         
-        .mermaid-box {
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            border: 1px solid rgba(0, 217, 255, 0.3);
-            border-radius: 1rem;
-            padding: 2rem;
-        }
-        
         .feature-icon {
-            width: 48px;
-            height: 48px;
+            width: 56px;
+            height: 56px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
-            font-size: 1.5rem;
+            border-radius: 14px;
+            font-size: 28px;
             background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(124, 58, 237, 0.2));
-            border: 1px solid rgba(0, 217, 255, 0.3);
+            border: 2px solid rgba(0, 217, 255, 0.4);
+        }
+        
+        .feature-card {
+            background: rgba(17, 24, 39, 0.8);
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            border-color: #00d9ff;
+            background: rgba(0, 217, 255, 0.1);
+            transform: scale(1.02);
         }
         
         .animate-float {
@@ -172,137 +172,228 @@
         
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-15px); }
         }
         
-        .animate-pulse-glow {
-            animation: pulseGlow 2s ease-in-out infinite;
+        .animate-glow {
+            animation: glow 2s ease-in-out infinite alternate;
         }
         
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 217, 255, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(0, 217, 255, 0.6); }
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(0, 217, 255, 0.3); }
+            to { box-shadow: 0 0 40px rgba(0, 217, 255, 0.6), 0 0 60px rgba(124, 58, 237, 0.3); }
         }
         
         .progress-bar {
-            height: 20px;
+            height: 24px;
             background: #1e293b;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            position: relative;
+            border: 1px solid rgba(100, 116, 139, 0.3);
         }
         
         .progress-fill {
             height: 100%;
-            border-radius: 10px;
-            transition: width 1s ease;
-            position: relative;
-            overflow: hidden;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: width 0.5s ease;
         }
         
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shimmer 2s infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        .toc-link {
-            transition: all 0.3s ease;
-            border-left: 2px solid transparent;
-            padding-left: 1rem;
-        }
-        
-        .toc-link:hover {
-            border-left-color: var(--primary);
-            color: var(--primary);
-            transform: translateX(5px);
-        }
-        
-        .section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-        
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .copy-btn {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .code-block:hover .copy-btn {
-            opacity: 1;
-        }
-        
-        .nav-blur {
+        .nav-bar {
             backdrop-filter: blur(20px);
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(10, 15, 26, 0.9);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
         }
         
         details {
+            background: rgba(17, 24, 39, 0.8);
             border: 1px solid rgba(0, 217, 255, 0.2);
-            border-radius: 0.5rem;
-            margin-bottom: 0.5rem;
+            border-radius: 10px;
+            margin-bottom: 10px;
             overflow: hidden;
         }
         
         details summary {
-            padding: 1rem;
+            padding: 16px 20px;
             cursor: pointer;
             background: rgba(0, 217, 255, 0.05);
-            transition: background 0.3s ease;
+            font-weight: 600;
+            color: #e2e8f0;
+            transition: all 0.3s;
         }
         
         details summary:hover {
             background: rgba(0, 217, 255, 0.1);
+            color: #00d9ff;
         }
         
         details[open] summary {
             border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+            color: #00d9ff;
         }
         
         details > div {
-            padding: 1rem;
+            padding: 16px 20px;
+            color: #94a3b8;
+        }
+        
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #00d9ff, #0891b2);
+            color: #0f172a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .social-card {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.3s;
+        }
+        
+        .social-card:hover {
+            border-color: #00d9ff;
+            transform: translateX(5px);
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        .section-title span {
+            font-size: 40px;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(100, 116, 139, 0.5);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            color: white;
+        }
+        
+        .copy-btn:hover {
+            background: #00d9ff;
+            color: #0f172a;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #00d9ff, #0891b2);
+            color: #0f172a;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(30, 41, 59, 0.8);
+            border: 2px solid rgba(0, 217, 255, 0.5);
+            color: #e2e8f0;
+            padding: 12px 26px;
+            border-radius: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(0, 217, 255, 0.1);
+            border-color: #00d9ff;
+            color: #00d9ff;
+        }
+        
+        .divider-img {
+            max-width: 100%;
+            height: auto;
+            margin: 30px auto;
+            display: block;
+        }
+        
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #00d9ff, #7c3aed);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 217, 255, 0.4);
+        }
+        
+        #backToTop.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        #backToTop:hover {
+            transform: translateY(-5px);
         }
     </style>
 </head>
-<body class="bg-slate-950 text-gray-100 min-h-screen">
-    <!-- Animated Background -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
-        <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
-    </div>
-
+<body>
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 nav-blur border-b border-cyan-500/20">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <nav class="nav-bar fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <span class="text-2xl">🚀</span>
-                <span class="font-bold text-lg gradient-text">Advanced System Utility App</span>
+                <span class="text-3xl">🚀</span>
+                <span class="font-bold text-xl gradient-text hidden sm:block">Advanced System Utility App</span>
             </div>
-            <div class="flex items-center gap-4">
-                <a href="#features" class="text-gray-300 hover:text-cyan-400 transition-colors text-sm hidden md:block">Features</a>
-                <a href="#installation" class="text-gray-300 hover:text-cyan-400 transition-colors text-sm hidden md:block">Install</a>
-                <a href="https://github.com/SudhirDevOps1/Advanced-System-Utility-App" target="_blank" class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg flex items-center gap-2 transition-all glow-hover">
-                    <i class="fab fa-github"></i>
+            <div class="flex items-center gap-6">
+                <a href="#features" class="text-gray-300 hover:text-cyan-400 transition font-medium hidden md:block">Features</a>
+                <a href="#installation" class="text-gray-300 hover:text-cyan-400 transition font-medium hidden md:block">Install</a>
+                <a href="#usage" class="text-gray-300 hover:text-cyan-400 transition font-medium hidden md:block">Usage</a>
+                <a href="https://github.com/SudhirDevOps1/Advanced-System-Utility-App" target="_blank" class="btn-secondary text-sm">
+                    <i class="fab fa-github text-xl"></i>
                     <span class="hidden sm:inline">GitHub</span>
                 </a>
             </div>
@@ -310,107 +401,109 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="relative z-10 pt-20">
+    <main class="pt-24">
         <!-- Hero Section -->
-        <section class="py-16 px-4">
-            <div class="max-w-4xl mx-auto text-center">
-                <div class="animate-float mb-8">
-                    <span class="text-8xl">🚀</span>
+        <section class="py-16 px-6">
+            <div class="max-w-5xl mx-auto text-center">
+                <div class="animate-float mb-10">
+                    <span class="text-9xl">🚀</span>
                 </div>
                 
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 gradient-text">
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-8 gradient-text">
                     Advanced System Utility App
                 </h1>
                 
-                <div class="mb-8">
-                    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=4000&pause=1000&color=00D9FF&center=true&vCenter=true&random=false&width=600&lines=Advanced+System+Utility+App;Built+with+Python+%26+Tkinter;All-in-One+Windows+Utility;By+Sudhir+Kumar+%F0%9F%91%A8%E2%80%8D%F0%9F%92%BB" alt="Typing SVG" class="mx-auto" />
+                <div class="mb-10">
+                    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=4000&pause=1000&color=00D9FF&center=true&vCenter=true&random=false&width=700&lines=Advanced+System+Utility+App;Built+with+Python+%26+Tkinter;All-in-One+Windows+Utility;By+Sudhir+Kumar+%F0%9F%91%A8%E2%80%8D%F0%9F%92%BB" alt="Typing SVG" class="mx-auto max-w-full" />
                 </div>
                 
                 <!-- Badges -->
-                <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <div class="flex flex-wrap justify-center gap-3 mb-10">
                     <span class="badge bg-blue-600 text-white"><i class="fab fa-python mr-2"></i>Python 3.6+</span>
                     <span class="badge bg-orange-500 text-white">Tkinter GUI</span>
                     <span class="badge bg-blue-500 text-white"><i class="fab fa-windows mr-2"></i>Windows</span>
-                    <span class="badge bg-green-500 text-white">MIT License</span>
-                    <span class="badge bg-emerald-500 text-white">✓ Maintained</span>
+                    <span class="badge bg-green-600 text-white">MIT License</span>
+                    <span class="badge bg-emerald-600 text-white">✓ Maintained</span>
                 </div>
                 
                 <!-- Social Stats -->
-                <div class="flex justify-center gap-4 mb-8">
-                    <a href="https://github.com/SudhirDevOps1/Advanced-System-Utility-App/stargazers" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-full hover:bg-slate-700 transition-colors">
-                        <i class="fas fa-star text-yellow-400"></i>
-                        <span>Stars</span>
+                <div class="flex flex-wrap justify-center gap-4 mb-10">
+                    <a href="https://github.com/SudhirDevOps1/Advanced-System-Utility-App/stargazers" class="social-card">
+                        <i class="fas fa-star text-2xl text-yellow-400"></i>
+                        <span class="font-semibold">Stars</span>
                     </a>
-                    <a href="https://github.com/SudhirDevOps1/Advanced-System-Utility-App/network/members" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-full hover:bg-slate-700 transition-colors">
-                        <i class="fas fa-code-branch text-cyan-400"></i>
-                        <span>Forks</span>
+                    <a href="https://github.com/SudhirDevOps1/Advanced-System-Utility-App/network/members" class="social-card">
+                        <i class="fas fa-code-branch text-2xl text-cyan-400"></i>
+                        <span class="font-semibold">Forks</span>
                     </a>
-                    <a href="https://github.com/SudhirDevOps1/Advanced-System-Utility-App/watchers" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-full hover:bg-slate-700 transition-colors">
-                        <i class="fas fa-eye text-purple-400"></i>
-                        <span>Watchers</span>
+                    <a href="https://github.com/SudhirDevOps1/Advanced-System-Utility-App/watchers" class="social-card">
+                        <i class="fas fa-eye text-2xl text-purple-400"></i>
+                        <span class="font-semibold">Watchers</span>
                     </a>
                 </div>
                 
-                <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" class="w-full max-w-3xl mx-auto mb-8" alt="divider">
+                <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" class="divider-img max-w-4xl" alt="divider">
                 
-                <p class="text-xl text-gray-300 mb-8">💻 A Comprehensive Windows Utility Application</p>
-                <p class="text-gray-400 italic mb-8">All your system utilities in one powerful, beautiful interface!</p>
+                <p class="text-2xl text-gray-200 mb-4 font-semibold">💻 A Comprehensive Windows Utility Application</p>
+                <p class="text-gray-400 text-lg italic mb-10">All your system utilities in one powerful, beautiful interface!</p>
                 
                 <!-- CTA Buttons -->
                 <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#installation" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity flex items-center gap-2 glow animate-pulse-glow">
-                        <i class="fas fa-download"></i> Download
+                    <a href="#installation" class="btn-primary animate-glow">
+                        <i class="fas fa-download"></i> Download Now
                     </a>
-                    <a href="#features" class="bg-slate-800 border border-cyan-500/50 px-8 py-3 rounded-lg font-semibold hover:bg-slate-700 transition-colors flex items-center gap-2">
-                        <i class="fas fa-sparkles"></i> Features
+                    <a href="#features" class="btn-secondary">
+                        <i class="fas fa-star"></i> View Features
                     </a>
-                    <a href="#usage" class="bg-slate-800 border border-purple-500/50 px-8 py-3 rounded-lg font-semibold hover:bg-slate-700 transition-colors flex items-center gap-2">
+                    <a href="#usage" class="btn-secondary">
                         <i class="fas fa-book"></i> Documentation
-                    </a>
-                    <a href="#contributing" class="bg-slate-800 border border-amber-500/50 px-8 py-3 rounded-lg font-semibold hover:bg-slate-700 transition-colors flex items-center gap-2">
-                        <i class="fas fa-handshake"></i> Contributing
                     </a>
                 </div>
             </div>
         </section>
 
         <!-- About Developer -->
-        <section class="py-16 px-4 section" id="developer">
+        <section class="py-20 px-6" id="developer">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-3">
-                    <span class="text-4xl">👨‍💻</span> About The Developer
+                <h2 class="section-title">
+                    <span>👨‍💻</span> About The Developer
                 </h2>
                 
-                <div class="text-center mb-8">
-                    <img src="https://user-images.githubusercontent.com/74038190/225813708-98b745f2-7d22-48cf-9150-083f15b36f3d.gif" class="w-full max-w-xl mx-auto rounded-xl" alt="coding">
+                <div class="text-center mb-10">
+                    <img src="https://user-images.githubusercontent.com/74038190/225813708-98b745f2-7d22-48cf-9150-083f15b36f3d.gif" class="max-w-xl w-full mx-auto rounded-2xl" alt="coding">
                 </div>
                 
-                <div class="card rounded-2xl p-8 text-center max-w-md mx-auto glow-hover transition-all">
-                    <img src="https://user-images.githubusercontent.com/74038190/235294012-0a55e343-37ad-4b0f-924f-c8431d9d2483.gif" class="w-24 h-24 mx-auto mb-4 rounded-full" alt="avatar">
-                    <h3 class="text-2xl font-bold text-cyan-400 mb-2">Sudhir Kumar</h3>
-                    <a href="https://github.com/SudhirDevOps1" class="text-gray-400 hover:text-cyan-400 transition-colors">@SudhirDevOps1</a>
-                    <p class="text-gray-500 mt-2">DevOps Engineer & Python Developer</p>
+                <div class="card p-10 text-center max-w-md mx-auto glow-box">
+                    <img src="https://user-images.githubusercontent.com/74038190/235294012-0a55e343-37ad-4b0f-924f-c8431d9d2483.gif" class="w-28 h-28 mx-auto mb-6 rounded-full border-4 border-cyan-400" alt="avatar">
+                    <h3 class="text-3xl font-bold text-cyan-400 mb-3">Sudhir Kumar</h3>
+                    <a href="https://github.com/SudhirDevOps1" class="text-gray-400 hover:text-cyan-400 transition text-lg">@SudhirDevOps1</a>
+                    <p class="text-gray-500 mt-3 text-lg">DevOps Engineer & Python Developer</p>
+                    <div class="mt-6 flex justify-center gap-4">
+                        <a href="https://github.com/SudhirDevOps1" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Features Section -->
-        <section class="py-16 px-4 section" id="features">
+        <section class="py-20 px-6" id="features">
             <div class="max-w-6xl mx-auto">
-                <h2 class="text-3xl font-bold mb-4 text-center flex items-center justify-center gap-3">
-                    <span class="text-4xl">🌟</span> Features
+                <h2 class="section-title">
+                    <span>🌟</span> Features
                 </h2>
-                <div class="text-center mb-12">
-                    <img src="https://user-images.githubusercontent.com/74038190/212284087-bbe7e430-757e-4901-90bf-4cd2ce3e1852.gif" class="w-24 mx-auto" alt="star">
+                <div class="text-center mb-16">
+                    <img src="https://user-images.githubusercontent.com/74038190/212284087-bbe7e430-757e-4901-90bf-4cd2ce3e1852.gif" class="w-28 mx-auto" alt="star">
                 </div>
 
-                <!-- Feature 1: Duplicate File Finder -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
+                <!-- Feature 1 -->
+                <div class="card p-8 mb-8 transition-all duration-300">
+                    <div class="flex items-center gap-5 mb-8">
                         <div class="feature-icon">📁</div>
-                        <h3 class="text-2xl font-bold">1. Duplicate File Finder</h3>
+                        <h3 class="text-2xl font-bold text-white">1. Duplicate File Finder</h3>
                     </div>
-                    <div class="table-container">
+                    <div class="overflow-x-auto">
                         <table class="styled-table">
                             <thead>
                                 <tr>
@@ -419,22 +512,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td>🔍 <strong>MD5 Hashing</strong></td><td>Scans directories to find duplicate files</td></tr>
-                                <tr><td>📋 <strong>Path Display</strong></td><td>Shows file paths of duplicate files found</td></tr>
-                                <tr><td>💾 <strong>Space Saver</strong></td><td>Helps free up disk space by identifying redundant files</td></tr>
-                                <tr><td>🧹 <strong>Clear Results</strong></td><td>Convenient clear results button</td></tr>
+                                <tr><td><strong class="text-cyan-400">🔍 MD5 Hashing</strong></td><td>Scans directories to find duplicate files</td></tr>
+                                <tr><td><strong class="text-cyan-400">📋 Path Display</strong></td><td>Shows file paths of duplicate files found</td></tr>
+                                <tr><td><strong class="text-cyan-400">💾 Space Saver</strong></td><td>Helps free up disk space by identifying redundant files</td></tr>
+                                <tr><td><strong class="text-cyan-400">🧹 Clear Results</strong></td><td>Convenient clear results button</td></tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Feature 2: File/Folder Search -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
+                <!-- Feature 2 -->
+                <div class="card p-8 mb-8 transition-all duration-300">
+                    <div class="flex items-center gap-5 mb-8">
                         <div class="feature-icon">🔎</div>
-                        <h3 class="text-2xl font-bold">2. File/Folder Search</h3>
+                        <h3 class="text-2xl font-bold text-white">2. File/Folder Search</h3>
                     </div>
-                    <div class="table-container">
+                    <div class="overflow-x-auto">
                         <table class="styled-table">
                             <thead>
                                 <tr>
@@ -443,28 +536,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td>📝 <strong>Name Search</strong></td><td>Search for files and folders by name</td></tr>
-                                <tr><td>📄 <strong>Extension Search</strong></td><td>Search by file extension</td></tr>
-                                <tr><td>📂 <strong>Directory Scope</strong></td><td>Specify directory to search in</td></tr>
-                                <tr><td>📍 <strong>Location Display</strong></td><td>Displays all matching file/folder locations</td></tr>
+                                <tr><td><strong class="text-cyan-400">📝 Name Search</strong></td><td>Search for files and folders by name</td></tr>
+                                <tr><td><strong class="text-cyan-400">📄 Extension Search</strong></td><td>Search by file extension</td></tr>
+                                <tr><td><strong class="text-cyan-400">📂 Directory Scope</strong></td><td>Specify directory to search in</td></tr>
+                                <tr><td><strong class="text-cyan-400">📍 Location Display</strong></td><td>Displays all matching file/folder locations</td></tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Feature 3: Privacy Cleaner -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
+                <!-- Feature 3 -->
+                <div class="card p-8 mb-8 transition-all duration-300">
+                    <div class="flex items-center gap-5 mb-8">
                         <div class="feature-icon">🛡️</div>
-                        <h3 class="text-2xl font-bold">3. Privacy Cleaner</h3>
+                        <h3 class="text-2xl font-bold text-white">3. Privacy Cleaner</h3>
                     </div>
-                    <div class="terminal-box max-w-lg mx-auto">
+                    <div class="terminal-box max-w-xl mx-auto">
                         <div class="terminal-header">
                             <div class="terminal-dot bg-red-500"></div>
                             <div class="terminal-dot bg-yellow-500"></div>
                             <div class="terminal-dot bg-green-500"></div>
+                            <span class="ml-4 text-gray-400 font-mono">privacy_cleaner.py</span>
                         </div>
-                        <div class="p-4 font-mono text-sm text-green-400 space-y-2">
+                        <div class="p-6 font-mono text-base text-green-400 space-y-3">
                             <p>🧹 Clean temporary files (>1 day old)</p>
                             <p>📋 Clear recent documents history</p>
                             <p>🌐 Remove browser cache files</p>
@@ -474,13 +568,13 @@
                     </div>
                 </div>
 
-                <!-- Feature 4: Package Manager -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
+                <!-- Feature 4 -->
+                <div class="card p-8 mb-8 transition-all duration-300">
+                    <div class="flex items-center gap-5 mb-8">
                         <div class="feature-icon">📦</div>
-                        <h3 class="text-2xl font-bold">4. Package Manager</h3>
+                        <h3 class="text-2xl font-bold text-white">4. Package Manager</h3>
                     </div>
-                    <div class="table-container">
+                    <div class="overflow-x-auto">
                         <table class="styled-table">
                             <thead>
                                 <tr>
@@ -490,96 +584,96 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td>View Packages</td><td>📋</td><td>View all installed Python packages</td></tr>
-                                <tr><td>Install</td><td>➕</td><td>Install new packages via pip</td></tr>
-                                <tr><td>Uninstall</td><td>➖</td><td>Uninstall existing packages</td></tr>
-                                <tr><td>Upgrade</td><td>⬆️</td><td>Upgrade packages to latest versions</td></tr>
-                                <tr><td>Upgrade Pip</td><td>🔄</td><td>Upgrade pip itself</td></tr>
-                                <tr><td>Export</td><td>📤</td><td>Export package list to file</td></tr>
-                                <tr><td>Refresh</td><td>🔃</td><td>Refresh packages list</td></tr>
+                                <tr><td><strong class="text-white">View Packages</strong></td><td class="text-2xl">📋</td><td>View all installed Python packages</td></tr>
+                                <tr><td><strong class="text-white">Install</strong></td><td class="text-2xl">➕</td><td>Install new packages via pip</td></tr>
+                                <tr><td><strong class="text-white">Uninstall</strong></td><td class="text-2xl">➖</td><td>Uninstall existing packages</td></tr>
+                                <tr><td><strong class="text-white">Upgrade</strong></td><td class="text-2xl">⬆️</td><td>Upgrade packages to latest versions</td></tr>
+                                <tr><td><strong class="text-white">Upgrade Pip</strong></td><td class="text-2xl">🔄</td><td>Upgrade pip itself</td></tr>
+                                <tr><td><strong class="text-white">Export</strong></td><td class="text-2xl">📤</td><td>Export package list to file</td></tr>
+                                <tr><td><strong class="text-white">Refresh</strong></td><td class="text-2xl">🔃</td><td>Refresh packages list</td></tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Feature 5: System Cleaner (Mermaid Diagram) -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
+                <!-- Feature 5 -->
+                <div class="card p-8 mb-8 transition-all duration-300">
+                    <div class="flex items-center gap-5 mb-8">
                         <div class="feature-icon">🧹</div>
-                        <h3 class="text-2xl font-bold">5. System Cleaner</h3>
+                        <h3 class="text-2xl font-bold text-white">5. System Cleaner</h3>
                     </div>
-                    <div class="mermaid-box">
-                        <div class="flex flex-wrap justify-center gap-4">
-                            <div class="bg-cyan-500 text-slate-900 px-6 py-3 rounded-lg font-bold text-center">
+                    <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-700">
+                        <div class="flex justify-center mb-6">
+                            <div class="bg-cyan-500 text-gray-900 px-8 py-4 rounded-xl font-bold text-xl">
                                 🧹 System Cleaner
                             </div>
                         </div>
-                        <div class="flex justify-center my-4">
-                            <div class="w-px h-8 bg-cyan-500"></div>
+                        <div class="flex justify-center mb-6">
+                            <div class="w-1 h-10 bg-cyan-500"></div>
                         </div>
-                        <div class="flex flex-wrap justify-center gap-3">
-                            <div class="bg-green-500/20 border border-green-500 px-4 py-2 rounded-lg text-green-400 text-sm">Full Cleanup</div>
-                            <div class="bg-yellow-500/20 border border-yellow-500 px-4 py-2 rounded-lg text-yellow-400 text-sm">Temp Files</div>
-                            <div class="bg-red-500/20 border border-red-500 px-4 py-2 rounded-lg text-red-400 text-sm">Log Files</div>
-                            <div class="bg-purple-500/20 border border-purple-500 px-4 py-2 rounded-lg text-purple-400 text-sm">Disk Usage</div>
-                            <div class="bg-pink-500/20 border border-pink-500 px-4 py-2 rounded-lg text-pink-400 text-sm">Recycle Bin</div>
-                            <div class="bg-blue-500/20 border border-blue-500 px-4 py-2 rounded-lg text-blue-400 text-sm">Drive Optimization</div>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <div class="bg-green-500/20 border-2 border-green-500 px-5 py-3 rounded-xl text-green-400 font-semibold">Full Cleanup</div>
+                            <div class="bg-yellow-500/20 border-2 border-yellow-500 px-5 py-3 rounded-xl text-yellow-400 font-semibold">Temp Files</div>
+                            <div class="bg-red-500/20 border-2 border-red-500 px-5 py-3 rounded-xl text-red-400 font-semibold">Log Files</div>
+                            <div class="bg-purple-500/20 border-2 border-purple-500 px-5 py-3 rounded-xl text-purple-400 font-semibold">Disk Usage</div>
+                            <div class="bg-pink-500/20 border-2 border-pink-500 px-5 py-3 rounded-xl text-pink-400 font-semibold">Recycle Bin</div>
+                            <div class="bg-blue-500/20 border-2 border-blue-500 px-5 py-3 rounded-xl text-blue-400 font-semibold">Drive Optimization</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature 6: Additional Features -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
+                <!-- Feature 6 -->
+                <div class="card p-8 mb-8 transition-all duration-300">
+                    <div class="flex items-center gap-5 mb-8">
                         <div class="feature-icon">ℹ️</div>
-                        <h3 class="text-2xl font-bold">6. Additional Features</h3>
+                        <h3 class="text-2xl font-bold text-white">6. Additional Features</h3>
                     </div>
-                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
-                        <div class="bg-slate-800 p-4 rounded-xl">
-                            <div class="text-3xl mb-2">🖥️</div>
-                            <div class="font-bold">System Info</div>
-                            <div class="text-xs text-gray-400">OS, CPU, Memory</div>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                        <div class="feature-card">
+                            <div class="text-4xl mb-3">🖥️</div>
+                            <div class="font-bold text-white">System Info</div>
+                            <div class="text-sm text-gray-400 mt-1">OS, CPU, Memory</div>
                         </div>
-                        <div class="bg-slate-800 p-4 rounded-xl">
-                            <div class="text-3xl mb-2">💾</div>
-                            <div class="font-bold">Disk Analysis</div>
-                            <div class="text-xs text-gray-400">Usage Analysis</div>
+                        <div class="feature-card">
+                            <div class="text-4xl mb-3">💾</div>
+                            <div class="font-bold text-white">Disk Analysis</div>
+                            <div class="text-sm text-gray-400 mt-1">Usage Analysis</div>
                         </div>
-                        <div class="bg-slate-800 p-4 rounded-xl">
-                            <div class="text-3xl mb-2">📁</div>
-                            <div class="font-bold">Large Files</div>
-                            <div class="text-xs text-gray-400">Files >100MB</div>
+                        <div class="feature-card">
+                            <div class="text-4xl mb-3">📁</div>
+                            <div class="font-bold text-white">Large Files</div>
+                            <div class="text-sm text-gray-400 mt-1">Files >100MB</div>
                         </div>
-                        <div class="bg-slate-800 p-4 rounded-xl">
-                            <div class="text-3xl mb-2">🚀</div>
-                            <div class="font-bold">Startup Programs</div>
-                            <div class="text-xs text-gray-400">Windows Startup</div>
+                        <div class="feature-card">
+                            <div class="text-4xl mb-3">🚀</div>
+                            <div class="font-bold text-white">Startup</div>
+                            <div class="text-sm text-gray-400 mt-1">Windows Startup</div>
                         </div>
-                        <div class="bg-slate-800 p-4 rounded-xl">
-                            <div class="text-3xl mb-2">⚡</div>
-                            <div class="font-bold">Processes</div>
-                            <div class="text-xs text-gray-400">Running Processes</div>
+                        <div class="feature-card">
+                            <div class="text-4xl mb-3">⚡</div>
+                            <div class="font-bold text-white">Processes</div>
+                            <div class="text-sm text-gray-400 mt-1">Running Processes</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature 7: Terminal Emulator -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
+                <!-- Feature 7 -->
+                <div class="card p-8 mb-8 transition-all duration-300">
+                    <div class="flex items-center gap-5 mb-8">
                         <div class="feature-icon">💻</div>
-                        <h3 class="text-2xl font-bold">7. Terminal Emulator</h3>
+                        <h3 class="text-2xl font-bold text-white">7. Terminal Emulator</h3>
                     </div>
-                    <div class="text-center mb-4">
-                        <img src="https://user-images.githubusercontent.com/74038190/212257472-08e52665-c503-4bd9-aa20-f5a4dae769b5.gif" class="w-24 mx-auto" alt="terminal">
+                    <div class="text-center mb-6">
+                        <img src="https://user-images.githubusercontent.com/74038190/212257472-08e52665-c503-4bd9-aa20-f5a4dae769b5.gif" class="w-28 mx-auto" alt="terminal">
                     </div>
                     <div class="terminal-box max-w-2xl mx-auto">
                         <div class="terminal-header">
                             <div class="terminal-dot bg-red-500"></div>
                             <div class="terminal-dot bg-yellow-500"></div>
                             <div class="terminal-dot bg-green-500"></div>
-                            <span class="ml-4 text-gray-400 text-sm">🖥️ TERMINAL EMULATOR</span>
+                            <span class="ml-4 text-gray-300 font-semibold">🖥️ TERMINAL EMULATOR</span>
                         </div>
-                        <div class="p-4 font-mono text-sm text-green-400 space-y-1">
+                        <div class="p-6 font-mono text-base text-green-400 space-y-2">
                             <p>✅ Full CMD and PowerShell access</p>
                             <p>🔄 Switch between shells easily</p>
                             <p>📜 Command history display</p>
@@ -589,441 +683,207 @@
                     </div>
                 </div>
 
-                <!-- Feature 8: File Information -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="feature-icon">📄</div>
-                        <h3 class="text-2xl font-bold">8. Professional File Information</h3>
-                    </div>
-                    <div class="table-container">
-                        <table class="styled-table">
-                            <thead>
-                                <tr><th>Feature</th><th>Icon</th><th>Details</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>File Details</td><td>📊</td><td>Size, modification date</td></tr>
-                                <tr><td>Duplicate Detection</td><td>🔍</td><td>Enhanced with detailed metadata</td></tr>
-                                <tr><td>Search Results</td><td>📑</td><td>Comprehensive file details</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Feature 9: Dark Theme -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="feature-icon">🌙</div>
-                        <h3 class="text-2xl font-bold">9. Dark Theme Support</h3>
-                    </div>
-                    <div class="flex justify-center gap-8 mb-6">
-                        <div class="text-center">
-                            <h4 class="font-bold mb-2">☀️ Light Mode</h4>
-                            <span class="badge bg-gray-200 text-gray-800">Theme: Light</span>
-                        </div>
-                        <div class="text-center">
-                            <h4 class="font-bold mb-2">🌙 Dark Mode</h4>
-                            <span class="badge bg-gray-900 text-gray-100 border border-gray-700">Theme: Dark</span>
-                        </div>
-                    </div>
-                    <ul class="space-y-2 text-gray-300 max-w-md mx-auto">
-                        <li>✅ Toggle between light and dark themes</li>
-                        <li>✅ Professional dark mode with optimized contrast</li>
-                        <li>✅ Theme menu in the application menu bar</li>
-                        <li>✅ Automatic color adjustment for all UI elements</li>
-                    </ul>
-                </div>
-
-                <!-- Feature 10: Advanced Terminal -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="feature-icon">⚡</div>
-                        <h3 class="text-2xl font-bold">10. Advanced Terminal Features</h3>
-                    </div>
-                    <div class="text-center mb-4">
-                        <img src="https://user-images.githubusercontent.com/74038190/212257465-7ce8d493-cac5-494e-982a-5a9deb852c4b.gif" class="w-24 mx-auto" alt="terminal">
-                    </div>
-                    <div class="table-container">
-                        <table class="styled-table">
-                            <thead>
-                                <tr><th>Feature</th><th>Description</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>🔗 Shell Integration</td><td>Full PowerShell and CMD with proper directory navigation</td></tr>
-                                <tr><td>⬆️⬇️ Command History</td><td>Up/down arrow navigation</td></tr>
-                                <tr><td>💾 Persistent History</td><td>Command history saved between sessions</td></tr>
-                                <tr><td>🔄 Terminal Reset</td><td>Reset terminal functionality</td></tr>
-                                <tr><td>🗑️ Clear History</td><td>Clear history option</td></tr>
-                                <tr><td>🎨 Professional UI</td><td>Terminal-like interface with consistent styling</td></tr>
-                                <tr><td>⚡ Real-time Feedback</td><td>Command execution feedback</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Feature 11: Real-Time Monitoring -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
+                <!-- Feature 11 -->
+                <div class="card p-8 mb-8 transition-all duration-300">
+                    <div class="flex items-center gap-5 mb-8">
                         <div class="feature-icon">📊</div>
-                        <h3 class="text-2xl font-bold">11. Real-Time Monitoring</h3>
+                        <h3 class="text-2xl font-bold text-white">11. Real-Time Monitoring</h3>
                     </div>
                     <div class="terminal-box max-w-xl mx-auto">
                         <div class="terminal-header">
                             <div class="terminal-dot bg-red-500"></div>
                             <div class="terminal-dot bg-yellow-500"></div>
                             <div class="terminal-dot bg-green-500"></div>
-                            <span class="ml-4 text-gray-400 text-sm">📊 SYSTEM MONITOR</span>
+                            <span class="ml-4 text-gray-300 font-semibold">📊 SYSTEM MONITOR</span>
                         </div>
-                        <div class="p-6 space-y-4">
+                        <div class="p-8 space-y-6">
                             <div>
-                                <div class="flex justify-between mb-1 text-sm">
-                                    <span>CPU Usage</span>
-                                    <span id="cpu-val">60%</span>
+                                <div class="flex justify-between mb-2 text-base font-semibold">
+                                    <span class="text-white">CPU Usage</span>
+                                    <span class="text-cyan-400" id="cpu-val">65%</span>
                                 </div>
                                 <div class="progress-bar">
-                                    <div class="progress-fill bg-gradient-to-r from-cyan-500 to-blue-500" id="cpu-bar" style="width: 60%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1 text-sm">
-                                    <span>RAM Usage</span>
-                                    <span id="ram-val">70%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill bg-gradient-to-r from-purple-500 to-pink-500" id="ram-bar" style="width: 70%"></div>
+                                    <div class="progress-fill bg-gradient-to-r from-cyan-500 to-blue-500" id="cpu-bar" style="width: 65%"></div>
                                 </div>
                             </div>
                             <div>
-                                <div class="flex justify-between mb-1 text-sm">
-                                    <span>Disk Usage</span>
-                                    <span id="disk-val">40%</span>
+                                <div class="flex justify-between mb-2 text-base font-semibold">
+                                    <span class="text-white">RAM Usage</span>
+                                    <span class="text-purple-400" id="ram-val">72%</span>
                                 </div>
                                 <div class="progress-bar">
-                                    <div class="progress-fill bg-gradient-to-r from-amber-500 to-orange-500" id="disk-bar" style="width: 40%"></div>
+                                    <div class="progress-fill bg-gradient-to-r from-purple-500 to-pink-500" id="ram-bar" style="width: 72%"></div>
                                 </div>
                             </div>
-                            <div class="flex gap-4 mt-4 justify-center">
-                                <button onclick="startMonitoring()" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg text-sm transition-colors">▶️ Start</button>
-                                <button onclick="stopMonitoring()" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg text-sm transition-colors">⏹️ Stop</button>
+                            <div>
+                                <div class="flex justify-between mb-2 text-base font-semibold">
+                                    <span class="text-white">Disk Usage</span>
+                                    <span class="text-amber-400" id="disk-val">45%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-gradient-to-r from-amber-500 to-orange-500" id="disk-bar" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 mt-6 justify-center">
+                                <button onclick="startMonitoring()" class="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-semibold transition flex items-center gap-2">
+                                    <span>▶️</span> Start
+                                </button>
+                                <button onclick="stopMonitoring()" class="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-lg font-semibold transition flex items-center gap-2">
+                                    <span>⏹️</span> Stop
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature 12: Security Tools -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="feature-icon">🔐</div>
-                        <h3 class="text-2xl font-bold">12. Security Tools</h3>
+                <!-- More Features Grid -->
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <!-- Feature 12 -->
+                    <div class="card p-6 transition-all duration-300">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="feature-icon text-xl">🔐</div>
+                            <h3 class="text-xl font-bold text-white">12. Security Tools</h3>
+                        </div>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center gap-3"><span class="text-xl">🔑</span> Password Generator</li>
+                            <li class="flex items-center gap-3"><span class="text-xl">#️⃣</span> Hash Calculator (MD5, SHA256, SHA1)</li>
+                            <li class="flex items-center gap-3"><span class="text-xl">🛡️</span> Secure Algorithms</li>
+                        </ul>
                     </div>
-                    <div class="table-container">
-                        <table class="styled-table">
-                            <thead>
-                                <tr><th>Tool</th><th>Icon</th><th>Description</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>Password Generator</td><td>🔑</td><td>Customizable length passwords</td></tr>
-                                <tr><td>Hash Calculator</td><td>#️⃣</td><td>MD5, SHA256, SHA1 support</td></tr>
-                                <tr><td>Secure Algorithms</td><td>🛡️</td><td>Cryptographically secure generation</td></tr>
-                            </tbody>
-                        </table>
+
+                    <!-- Feature 13 -->
+                    <div class="card p-6 transition-all duration-300">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="feature-icon text-xl">🌐</div>
+                            <h3 class="text-xl font-bold text-white">13. Network Tools</h3>
+                        </div>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center gap-3"><span class="text-xl">📡</span> Ping Tool</li>
+                            <li class="flex items-center gap-3"><span class="text-xl">🔍</span> Port Scanner</li>
+                            <li class="flex items-center gap-3"><span class="text-xl">✅</span> Host Checker</li>
+                            <li class="flex items-center gap-3"><span class="text-xl">🩺</span> Network Diagnostics</li>
+                        </ul>
+                    </div>
+
+                    <!-- Feature 14 -->
+                    <div class="card p-6 transition-all duration-300">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="feature-icon text-xl">👨‍💻</div>
+                            <h3 class="text-xl font-bold text-white">14. Developer Tools</h3>
+                        </div>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center gap-3"><span class="text-xl">🔄</span> Base64 Encoder/Decoder</li>
+                            <li class="flex items-center gap-3"><span class="text-xl">📝</span> JSON Formatter & Validator</li>
+                            <li class="flex items-center gap-3"><span class="text-xl">📋</span> Code Snippet Utilities</li>
+                        </ul>
+                    </div>
+
+                    <!-- Feature 18 -->
+                    <div class="card p-6 transition-all duration-300">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="feature-icon text-xl">🌈</div>
+                            <h3 class="text-xl font-bold text-white">18. Color Tools</h3>
+                        </div>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center gap-3"><span class="text-xl">🎨</span> Visual Color Selector</li>
+                            <li class="flex items-center gap-3"><span class="text-xl">🔢</span> HEX, RGB, HSL Formats</li>
+                            <li class="flex items-center gap-3"><span class="text-xl">🎭</span> Palette Generator</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Feature 13: Network Tools -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="feature-icon">🌐</div>
-                        <h3 class="text-2xl font-bold">13. Network Tools</h3>
-                    </div>
-                    <div class="text-center mb-4">
-                        <img src="https://user-images.githubusercontent.com/74038190/212257468-1e9a91f1-b626-4baa-b15d-5c385dfa7ed2.gif" class="w-24 mx-auto" alt="network">
-                    </div>
-                    <div class="table-container">
-                        <table class="styled-table">
-                            <thead>
-                                <tr><th>Tool</th><th>Function</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>📡 Ping Tool</td><td>Connectivity testing</td></tr>
-                                <tr><td>🔍 Port Scanner</td><td>Network security scanning</td></tr>
-                                <tr><td>✅ Host Checker</td><td>Host availability checking</td></tr>
-                                <tr><td>🩺 Diagnostics</td><td>Network diagnostics</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Feature 14: Developer Tools -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="feature-icon">👨‍💻</div>
-                        <h3 class="text-2xl font-bold">14. Developer Tools</h3>
-                    </div>
-                    <div class="terminal-box max-w-md mx-auto">
-                        <div class="terminal-header">
-                            <div class="terminal-dot bg-red-500"></div>
-                            <div class="terminal-dot bg-yellow-500"></div>
-                            <div class="terminal-dot bg-green-500"></div>
-                            <span class="ml-4 text-gray-400 text-sm">🛠️ DEVELOPER TOOLKIT</span>
-                        </div>
-                        <div class="p-4 font-mono text-sm text-cyan-400 space-y-2">
-                            <p>🔄 Base64 Encoder/Decoder</p>
-                            <p>📝 JSON Formatter & Validator</p>
-                            <p>📋 Code Snippet Utilities</p>
-                            <p>⚙️ Development Utilities</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature 15: System Tools -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="feature-icon">🖥️</div>
-                        <h3 class="text-2xl font-bold">15. System Tools</h3>
-                    </div>
-                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
-                        <div class="bg-slate-800 p-4 rounded-xl">
-                            <div class="text-3xl mb-2">📊</div>
-                            <div class="font-bold">Dashboard</div>
-                            <div class="text-xs text-gray-400">System Info</div>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl">
-                            <div class="text-3xl mb-2">🔧</div>
-                            <div class="font-bold">Hardware</div>
-                            <div class="text-xs text-gray-400">Hardware Details</div>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl">
-                            <div class="text-3xl mb-2">🌐</div>
-                            <div class="font-bold">Network</div>
-                            <div class="text-xs text-gray-400">Interface Details</div>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl">
-                            <div class="text-3xl mb-2">⚡</div>
-                            <div class="font-bold">Process</div>
-                            <div class="text-xs text-gray-400">Kill Processes</div>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl">
-                            <div class="text-3xl mb-2">📈</div>
-                            <div class="font-bold">Resources</div>
-                            <div class="text-xs text-gray-400">Monitoring</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature 16: User Profile -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="feature-icon">👤</div>
-                        <h3 class="text-2xl font-bold">16. User Profile & Personalization</h3>
-                    </div>
-                    <div class="text-center mb-4">
-                        <img src="https://user-images.githubusercontent.com/74038190/216122041-518ac897-8d92-4c6b-9b3f-ca01dcaf38ee.png" class="w-24 mx-auto" alt="profile">
-                    </div>
-                    <div class="table-container">
-                        <table class="styled-table">
-                            <thead>
-                                <tr><th>Feature</th><th>Description</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>👤 Profile Management</td><td>Complete user profile system</td></tr>
-                                <tr><td>✏️ Customization</td><td>Display name and username</td></tr>
-                                <tr><td>📝 Bio/Description</td><td>Personal profile description</td></tr>
-                                <tr><td>🖼️ Avatar Selection</td><td>Choose your avatar</td></tr>
-                                <tr><td>📊 Statistics</td><td>User statistics tracking</td></tr>
-                                <tr><td>💾 Save/Load</td><td>Profile persistence</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Feature 17: Terminal Customization -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="feature-icon">🎨</div>
-                        <h3 class="text-2xl font-bold">17. Terminal Customization</h3>
-                    </div>
-                    <div class="terminal-box max-w-lg mx-auto">
-                        <div class="terminal-header">
-                            <div class="terminal-dot bg-red-500"></div>
-                            <div class="terminal-dot bg-yellow-500"></div>
-                            <div class="terminal-dot bg-green-500"></div>
-                            <span class="ml-4 text-gray-400 text-sm">🎨 TERMINAL SETTINGS</span>
-                        </div>
-                        <div class="p-4 font-mono text-sm text-purple-400 space-y-2">
-                            <p>🔤 Font Family Selection</p>
-                            <p>📏 Font Size Adjustment</p>
-                            <p>🎨 Text Color Customization</p>
-                            <p>🖼️ Background Color Settings</p>
-                            <p>✅ Professional Appearance</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature 18: Color Tools -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="feature-icon">🌈</div>
-                        <h3 class="text-2xl font-bold">18. Color Tools</h3>
-                    </div>
-                    <div class="grid grid-cols-3 md:grid-cols-5 gap-4 text-center mb-6">
-                        <div class="bg-slate-800 p-4 rounded-xl">
-                            <div class="text-3xl mb-2">🎨</div>
-                            <div class="text-sm">Color Picker</div>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl">
-                            <div class="text-3xl mb-2">🔢</div>
-                            <div class="text-sm">HEX/RGB/HSL</div>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl">
-                            <div class="text-3xl mb-2">🎭</div>
-                            <div class="text-sm">Palette Display</div>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl">
-                            <div class="text-3xl mb-2">🔄</div>
-                            <div class="text-sm">Code Conversion</div>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl">
-                            <div class="text-3xl mb-2">💫</div>
-                            <div class="text-sm">Color Mixing</div>
-                        </div>
-                    </div>
-                    <ul class="text-gray-300 space-y-2 max-w-lg mx-auto">
-                        <li>🎨 Visual color selector</li>
-                        <li>📊 Multiple formats (HEX, RGB, HSL, etc.)</li>
-                        <li>🎭 Palette generator (complementary, analogous, triadic)</li>
-                        <li>⚙️ Color utilities (contrast, lighten/darken, invert)</li>
-                    </ul>
-                </div>
-
-                <!-- Feature 19: Advanced Terminal Customization -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
+                <!-- Feature 19: Advanced Customization -->
+                <div class="card p-8 mb-8 transition-all duration-300">
+                    <div class="flex items-center gap-5 mb-8">
                         <div class="feature-icon">⚙️</div>
-                        <h3 class="text-2xl font-bold">19. Advanced Terminal Customization</h3>
+                        <h3 class="text-2xl font-bold text-white">19. Advanced Terminal Customization</h3>
                     </div>
-                    <div class="text-center mb-6">
-                        <img src="https://user-images.githubusercontent.com/74038190/212284136-03988914-d899-44b4-b1d9-4c3786395bf6.gif" class="w-full max-w-md mx-auto rounded-xl" alt="settings">
+                    <div class="text-center mb-8">
+                        <img src="https://user-images.githubusercontent.com/74038190/212284136-03988914-d899-44b4-b1d9-4c3786395bf6.gif" class="max-w-lg w-full mx-auto rounded-xl" alt="settings">
                     </div>
-                    <div class="space-y-2 max-w-2xl mx-auto">
+                    <div class="max-w-2xl mx-auto space-y-3">
                         <details>
-                            <summary class="font-bold cursor-pointer">🔤 <strong>Font Settings</strong></summary>
-                            <div class="text-gray-300 text-sm space-y-1 pt-2">
+                            <summary>🔤 Font Settings</summary>
+                            <div>
                                 <p>• 50+ fonts supported</p>
                                 <p>• Font size and weight customization</p>
                                 <p>• Font style (normal, italic, bold)</p>
                                 <p>• Letter spacing controls</p>
-                                <p>• Line height adjustments</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-bold cursor-pointer">🎨 <strong>Color Settings</strong></summary>
-                            <div class="text-gray-300 text-sm space-y-1 pt-2">
+                            <summary>🎨 Color Settings</summary>
+                            <div>
                                 <p>• Text color customization</p>
                                 <p>• Background color options</p>
                                 <p>• Cursor color</p>
                                 <p>• Selection highlight color</p>
-                                <p>• Status colors (error, success, warning, info)</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-bold cursor-pointer">🖼️ <strong>Background Options</strong></summary>
-                            <div class="text-gray-300 text-sm space-y-1 pt-2">
+                            <summary>🖼️ Background Options</summary>
+                            <div>
                                 <p>• Solid colors</p>
                                 <p>• Gradient backgrounds</p>
                                 <p>• Image backgrounds</p>
                             </div>
                         </details>
                         <details>
-                            <summary class="font-bold cursor-pointer">✨ <strong>Effects & Animations</strong></summary>
-                            <div class="text-gray-300 text-sm space-y-1 pt-2">
+                            <summary>✨ Effects & Animations</summary>
+                            <div>
                                 <p>• Typing animation</p>
                                 <p>• Cursor blink effect</p>
                                 <p>• Neon glow effect</p>
                                 <p>• Rainbow text animation</p>
                             </div>
                         </details>
-                        <details>
-                            <summary class="font-bold cursor-pointer">📐 <strong>Layout Settings</strong></summary>
-                            <div class="text-gray-300 text-sm space-y-1 pt-2">
-                                <p>• Custom dimensions</p>
-                                <p>• Padding controls</p>
-                                <p>• Margin settings</p>
-                                <p>• Scrollbar customization</p>
-                                <p>• Position and mode controls</p>
-                                <p>• Fullscreen & compact modes</p>
-                            </div>
-                        </details>
                     </div>
                 </div>
 
-                <!-- Feature 20: Enhanced User Profile -->
-                <div class="card rounded-2xl p-6 mb-8 glow-hover transition-all">
-                    <div class="flex items-center gap-4 mb-6">
+                <!-- Feature 20 -->
+                <div class="card p-8 mb-8 transition-all duration-300">
+                    <div class="flex items-center gap-5 mb-8">
                         <div class="feature-icon">🏆</div>
-                        <h3 class="text-2xl font-bold">20. Enhanced User Profile</h3>
+                        <h3 class="text-2xl font-bold text-white">20. Enhanced User Profile</h3>
                     </div>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="bg-slate-800 p-4 rounded-xl flex items-center gap-4">
-                            <span class="text-2xl">🔗</span>
-                            <span>Social Media Links</span>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl flex items-center gap-4">
-                            <i class="fab fa-github text-2xl"></i>
-                            <span>GitHub Integration</span>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl flex items-center gap-4">
-                            <i class="fab fa-linkedin text-2xl text-blue-500"></i>
-                            <span>LinkedIn Integration</span>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl flex items-center gap-4">
-                            <i class="fab fa-twitter text-2xl text-cyan-400"></i>
-                            <span>Twitter Integration</span>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl flex items-center gap-4">
-                            <span class="text-2xl">🔐</span>
-                            <span>Login/Logout System</span>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl flex items-center gap-4">
-                            <span class="text-2xl">📊</span>
-                            <span>Statistics Tracking</span>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl flex items-center gap-4">
-                            <span class="text-2xl">🕐</span>
-                            <span>Last Login Timestamp</span>
-                        </div>
-                        <div class="bg-slate-800 p-4 rounded-xl flex items-center gap-4">
-                            <span class="text-2xl">🏅</span>
-                            <span>Achievement Badges</span>
-                        </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="social-card"><i class="fab fa-github text-2xl"></i><span>GitHub</span></div>
+                        <div class="social-card"><i class="fab fa-linkedin text-2xl text-blue-500"></i><span>LinkedIn</span></div>
+                        <div class="social-card"><i class="fab fa-twitter text-2xl text-cyan-400"></i><span>Twitter</span></div>
+                        <div class="social-card"><span class="text-2xl">🔐</span><span>Login System</span></div>
+                        <div class="social-card"><span class="text-2xl">📊</span><span>Statistics</span></div>
+                        <div class="social-card"><span class="text-2xl">🕐</span><span>Login Timestamp</span></div>
+                        <div class="social-card"><span class="text-2xl">🏅</span><span>Badges</span></div>
+                        <div class="social-card"><span class="text-2xl">📤</span><span>Export</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Requirements Section -->
-        <section class="py-16 px-4 section" id="requirements">
+        <section class="py-20 px-6" id="requirements">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-3">
-                    <span class="text-4xl">📋</span> Requirements
+                <h2 class="section-title">
+                    <span>📋</span> Requirements
                 </h2>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="card rounded-2xl p-6 text-center glow-hover transition-all">
-                        <i class="fab fa-python text-5xl text-blue-400 mb-4"></i>
-                        <h3 class="text-xl font-bold mb-2">Python</h3>
-                        <span class="badge bg-blue-600 text-white">3.6+</span>
+                <div class="grid md:grid-cols-2 gap-8 mb-10">
+                    <div class="card p-8 text-center glow-box">
+                        <i class="fab fa-python text-7xl text-blue-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Python</h3>
+                        <span class="badge bg-blue-600 text-white text-lg">3.6+</span>
                     </div>
-                    <div class="card rounded-2xl p-6 text-center glow-hover transition-all">
-                        <i class="fab fa-windows text-5xl text-blue-500 mb-4"></i>
-                        <h3 class="text-xl font-bold mb-2">Windows</h3>
-                        <span class="badge bg-blue-500 text-white">10/11</span>
+                    <div class="card p-8 text-center glow-box">
+                        <i class="fab fa-windows text-7xl text-blue-500 mb-6"></i>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Windows</h3>
+                        <span class="badge bg-blue-500 text-white text-lg">10/11</span>
                     </div>
                 </div>
                 
-                <div class="card rounded-2xl p-6 mt-8 glow-hover transition-all">
-                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                        <span>📦</span> Dependencies
+                <div class="card p-8 glow-box">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-white">
+                        <span class="text-2xl">📦</span> Dependencies
                     </h3>
-                    <div class="code-block font-mono text-sm">
+                    <div class="code-block font-mono text-base">
                         <code class="text-green-400">psutil>=5.9.0<br>tkinter (built-in)<br>hashlib (built-in)<br>subprocess (built-in)</code>
                     </div>
                 </div>
@@ -1031,57 +891,57 @@
         </section>
 
         <!-- Installation Section -->
-        <section class="py-16 px-4 section" id="installation">
+        <section class="py-20 px-6" id="installation">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-4 text-center flex items-center justify-center gap-3">
-                    <span class="text-4xl">📥</span> Installation
+                <h2 class="section-title">
+                    <span>📥</span> Installation
                 </h2>
-                <div class="text-center mb-8">
-                    <img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" class="w-24 mx-auto" alt="install">
+                <div class="text-center mb-12">
+                    <img src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif" class="w-28 mx-auto" alt="install">
                 </div>
                 
                 <div class="space-y-6">
-                    <div class="card rounded-2xl p-6 glow-hover transition-all">
-                        <div class="flex items-center gap-4 mb-4">
-                            <span class="bg-cyan-500 text-slate-900 w-10 h-10 rounded-full flex items-center justify-center font-bold">1</span>
-                            <h3 class="text-xl font-bold">Clone the Repository</h3>
+                    <div class="card p-8">
+                        <div class="flex items-center gap-5 mb-6">
+                            <div class="step-number">1</div>
+                            <h3 class="text-xl font-bold text-white">Clone the Repository</h3>
                         </div>
-                        <div class="code-block font-mono text-sm relative">
-                            <code class="text-green-400">git clone https://github.com/SudhirDevOps1/Advanced-System-Utility-App.git</code>
-                            <button class="copy-btn bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded text-xs" onclick="copyCode(this)">📋 Copy</button>
-                        </div>
-                    </div>
-                    
-                    <div class="card rounded-2xl p-6 glow-hover transition-all">
-                        <div class="flex items-center gap-4 mb-4">
-                            <span class="bg-cyan-500 text-slate-900 w-10 h-10 rounded-full flex items-center justify-center font-bold">2</span>
-                            <h3 class="text-xl font-bold">Navigate to Directory</h3>
-                        </div>
-                        <div class="code-block font-mono text-sm relative">
-                            <code class="text-green-400">cd Advanced-System-Utility-App</code>
-                            <button class="copy-btn bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded text-xs" onclick="copyCode(this)">📋 Copy</button>
+                        <div class="code-block font-mono relative">
+                            <code class="text-green-400 text-base">git clone https://github.com/SudhirDevOps1/Advanced-System-Utility-App.git</code>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
                     </div>
                     
-                    <div class="card rounded-2xl p-6 glow-hover transition-all">
-                        <div class="flex items-center gap-4 mb-4">
-                            <span class="bg-cyan-500 text-slate-900 w-10 h-10 rounded-full flex items-center justify-center font-bold">3</span>
-                            <h3 class="text-xl font-bold">Install Dependencies</h3>
+                    <div class="card p-8">
+                        <div class="flex items-center gap-5 mb-6">
+                            <div class="step-number">2</div>
+                            <h3 class="text-xl font-bold text-white">Navigate to Directory</h3>
                         </div>
-                        <div class="code-block font-mono text-sm relative">
-                            <code class="text-green-400">pip install -r requirements.txt</code>
-                            <button class="copy-btn bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded text-xs" onclick="copyCode(this)">📋 Copy</button>
+                        <div class="code-block font-mono relative">
+                            <code class="text-green-400 text-base">cd Advanced-System-Utility-App</code>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
                     </div>
                     
-                    <div class="card rounded-2xl p-6 glow-hover transition-all">
-                        <div class="flex items-center gap-4 mb-4">
-                            <span class="bg-cyan-500 text-slate-900 w-10 h-10 rounded-full flex items-center justify-center font-bold">4</span>
-                            <h3 class="text-xl font-bold">Run the Application</h3>
+                    <div class="card p-8">
+                        <div class="flex items-center gap-5 mb-6">
+                            <div class="step-number">3</div>
+                            <h3 class="text-xl font-bold text-white">Install Dependencies</h3>
                         </div>
-                        <div class="code-block font-mono text-sm relative">
-                            <code class="text-green-400">python main.py</code>
-                            <button class="copy-btn bg-slate-700 hover:bg-slate-600 px-3 py-1 rounded text-xs" onclick="copyCode(this)">📋 Copy</button>
+                        <div class="code-block font-mono relative">
+                            <code class="text-green-400 text-base">pip install -r requirements.txt</code>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-8">
+                        <div class="flex items-center gap-5 mb-6">
+                            <div class="step-number">4</div>
+                            <h3 class="text-xl font-bold text-white">Run the Application</h3>
+                        </div>
+                        <div class="code-block font-mono relative">
+                            <code class="text-green-400 text-base">python main.py</code>
+                            <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
                         </div>
                     </div>
                 </div>
@@ -1089,112 +949,43 @@
         </section>
 
         <!-- Usage Section -->
-        <section class="py-16 px-4 section" id="usage">
+        <section class="py-20 px-6" id="usage">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-4 text-center flex items-center justify-center gap-3">
-                    <span class="text-4xl">🚀</span> Usage
+                <h2 class="section-title">
+                    <span>🚀</span> Usage
                 </h2>
-                <div class="text-center mb-8">
-                    <img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif" class="w-full max-w-md mx-auto rounded-xl" alt="usage">
+                <div class="text-center mb-12">
+                    <img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif" class="max-w-lg w-full mx-auto rounded-xl" alt="usage">
                 </div>
                 
-                <p class="text-gray-300 text-center mb-8">Simply run the application and navigate through the organized tabs:</p>
+                <p class="text-gray-300 text-center text-xl mb-10">Simply run the application and navigate through the organized tabs:</p>
                 
-                <div class="code-block font-mono text-sm mb-8 text-center">
+                <div class="code-block font-mono text-lg mb-12 text-center">
                     <code class="text-green-400">python main.py</code>
                 </div>
                 
-                <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
-                    <span>📑</span> Tab Navigation
-                </h3>
+                <h3 class="text-2xl font-bold mb-8 text-center text-white">📑 Tab Navigation</h3>
                 
                 <div class="grid md:grid-cols-2 gap-4">
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all">
-                        <span class="text-2xl">🔍</span>
-                        <div>
-                            <div class="font-bold">Duplicate Finder</div>
-                            <div class="text-sm text-gray-400">Find and remove duplicate files</div>
-                        </div>
-                    </div>
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all">
-                        <span class="text-2xl">📂</span>
-                        <div>
-                            <div class="font-bold">File Search</div>
-                            <div class="text-sm text-gray-400">Search files by name or extension</div>
-                        </div>
-                    </div>
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all">
-                        <span class="text-2xl">🛡️</span>
-                        <div>
-                            <div class="font-bold">Privacy Cleaner</div>
-                            <div class="text-sm text-gray-400">Clean sensitive data</div>
-                        </div>
-                    </div>
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all">
-                        <span class="text-2xl">📦</span>
-                        <div>
-                            <div class="font-bold">Package Manager</div>
-                            <div class="text-sm text-gray-400">Manage Python packages</div>
-                        </div>
-                    </div>
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all">
-                        <span class="text-2xl">🧹</span>
-                        <div>
-                            <div class="font-bold">System Cleaner</div>
-                            <div class="text-sm text-gray-400">Clean system files</div>
-                        </div>
-                    </div>
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all">
-                        <span class="text-2xl">💻</span>
-                        <div>
-                            <div class="font-bold">Terminal</div>
-                            <div class="text-sm text-gray-400">Command line access</div>
-                        </div>
-                    </div>
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all">
-                        <span class="text-2xl">📊</span>
-                        <div>
-                            <div class="font-bold">Monitoring</div>
-                            <div class="text-sm text-gray-400">Real-time system stats</div>
-                        </div>
-                    </div>
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all">
-                        <span class="text-2xl">🔐</span>
-                        <div>
-                            <div class="font-bold">Security</div>
-                            <div class="text-sm text-gray-400">Password & hash tools</div>
-                        </div>
-                    </div>
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all">
-                        <span class="text-2xl">🌐</span>
-                        <div>
-                            <div class="font-bold">Network</div>
-                            <div class="text-sm text-gray-400">Network utilities</div>
-                        </div>
-                    </div>
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all">
-                        <span class="text-2xl">👨‍💻</span>
-                        <div>
-                            <div class="font-bold">Developer</div>
-                            <div class="text-sm text-gray-400">Dev tools</div>
-                        </div>
-                    </div>
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all col-span-full md:col-span-1 md:col-start-1 md:col-end-2 justify-self-center md:justify-self-stretch">
-                        <span class="text-2xl">🎨</span>
-                        <div>
-                            <div class="font-bold">Color Tools</div>
-                            <div class="text-sm text-gray-400">Color picker & utilities</div>
-                        </div>
-                    </div>
+                    <div class="social-card"><span class="text-2xl">🔍</span><div><div class="font-bold text-white">Duplicate Finder</div><div class="text-sm text-gray-400">Find and remove duplicate files</div></div></div>
+                    <div class="social-card"><span class="text-2xl">📂</span><div><div class="font-bold text-white">File Search</div><div class="text-sm text-gray-400">Search files by name or extension</div></div></div>
+                    <div class="social-card"><span class="text-2xl">🛡️</span><div><div class="font-bold text-white">Privacy Cleaner</div><div class="text-sm text-gray-400">Clean sensitive data</div></div></div>
+                    <div class="social-card"><span class="text-2xl">📦</span><div><div class="font-bold text-white">Package Manager</div><div class="text-sm text-gray-400">Manage Python packages</div></div></div>
+                    <div class="social-card"><span class="text-2xl">🧹</span><div><div class="font-bold text-white">System Cleaner</div><div class="text-sm text-gray-400">Clean system files</div></div></div>
+                    <div class="social-card"><span class="text-2xl">💻</span><div><div class="font-bold text-white">Terminal</div><div class="text-sm text-gray-400">Command line access</div></div></div>
+                    <div class="social-card"><span class="text-2xl">📊</span><div><div class="font-bold text-white">Monitoring</div><div class="text-sm text-gray-400">Real-time system stats</div></div></div>
+                    <div class="social-card"><span class="text-2xl">🔐</span><div><div class="font-bold text-white">Security</div><div class="text-sm text-gray-400">Password & hash tools</div></div></div>
+                    <div class="social-card"><span class="text-2xl">🌐</span><div><div class="font-bold text-white">Network</div><div class="text-sm text-gray-400">Network utilities</div></div></div>
+                    <div class="social-card"><span class="text-2xl">🎨</span><div><div class="font-bold text-white">Color Tools</div><div class="text-sm text-gray-400">Color picker & utilities</div></div></div>
                 </div>
             </div>
         </section>
 
         <!-- Project Structure -->
-        <section class="py-16 px-4 section" id="structure">
+        <section class="py-20 px-6" id="structure">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-3">
-                    <span class="text-4xl">📁</span> Project Structure
+                <h2 class="section-title">
+                    <span>📁</span> Project Structure
                 </h2>
                 
                 <div class="terminal-box">
@@ -1202,124 +993,130 @@
                         <div class="terminal-dot bg-red-500"></div>
                         <div class="terminal-dot bg-yellow-500"></div>
                         <div class="terminal-dot bg-green-500"></div>
-                        <span class="ml-4 text-gray-400 text-sm">📂 Project Files</span>
+                        <span class="ml-4 text-gray-300 font-semibold">📂 Project Files</span>
                     </div>
-                    <div class="p-6 font-mono text-sm">
-                        <div class="text-cyan-400">Advanced-System-Utility-App/</div>
-                        <div class="text-gray-400 ml-4">│</div>
-                        <div class="ml-4"><span class="text-gray-400">├── </span><span class="text-yellow-400">📄 main.py</span> <span class="text-gray-500"># Entry point</span></div>
-                        <div class="ml-4"><span class="text-gray-400">├── </span><span class="text-blue-400">🖥️ gui_app.py</span> <span class="text-gray-500"># Main GUI application</span></div>
-                        <div class="ml-4"><span class="text-gray-400">├── </span><span class="text-green-400">🔍 duplicate_finder.py</span> <span class="text-gray-500"># Duplicate file logic</span></div>
-                        <div class="ml-4"><span class="text-gray-400">├── </span><span class="text-purple-400">📂 file_searcher.py</span> <span class="text-gray-500"># File search logic</span></div>
-                        <div class="ml-4"><span class="text-gray-400">├── </span><span class="text-pink-400">🛡️ privacy_cleaner.py</span> <span class="text-gray-500"># Privacy cleaning</span></div>
-                        <div class="ml-4"><span class="text-gray-400">├── </span><span class="text-orange-400">📦 package_manager.py</span> <span class="text-gray-500"># Package management</span></div>
-                        <div class="ml-4"><span class="text-gray-400">├── </span><span class="text-red-400">🧹 system_cleaner.py</span> <span class="text-gray-500"># System cleanup</span></div>
-                        <div class="ml-4"><span class="text-gray-400">├── </span><span class="text-gray-300">📋 requirements.txt</span> <span class="text-gray-500"># Dependencies</span></div>
-                        <div class="ml-4"><span class="text-gray-400">└── </span><span class="text-cyan-400">📖 README.md</span> <span class="text-gray-500"># Documentation</span></div>
+                    <div class="p-8 font-mono text-base leading-relaxed">
+                        <div class="text-cyan-400 text-lg font-bold">Advanced-System-Utility-App/</div>
+                        <div class="text-gray-500 ml-4">│</div>
+                        <div class="ml-4"><span class="text-gray-500">├── </span><span class="text-yellow-400">📄 main.py</span> <span class="text-gray-500 ml-4"># Entry point</span></div>
+                        <div class="ml-4"><span class="text-gray-500">├── </span><span class="text-blue-400">🖥️ gui_app.py</span> <span class="text-gray-500 ml-4"># Main GUI application</span></div>
+                        <div class="ml-4"><span class="text-gray-500">├── </span><span class="text-green-400">🔍 duplicate_finder.py</span> <span class="text-gray-500 ml-4"># Duplicate file logic</span></div>
+                        <div class="ml-4"><span class="text-gray-500">├── </span><span class="text-purple-400">📂 file_searcher.py</span> <span class="text-gray-500 ml-4"># File search logic</span></div>
+                        <div class="ml-4"><span class="text-gray-500">├── </span><span class="text-pink-400">🛡️ privacy_cleaner.py</span> <span class="text-gray-500 ml-4"># Privacy cleaning</span></div>
+                        <div class="ml-4"><span class="text-gray-500">├── </span><span class="text-orange-400">📦 package_manager.py</span> <span class="text-gray-500 ml-4"># Package management</span></div>
+                        <div class="ml-4"><span class="text-gray-500">├── </span><span class="text-red-400">🧹 system_cleaner.py</span> <span class="text-gray-500 ml-4"># System cleanup</span></div>
+                        <div class="ml-4"><span class="text-gray-500">├── </span><span class="text-gray-300">📋 requirements.txt</span> <span class="text-gray-500 ml-4"># Dependencies</span></div>
+                        <div class="ml-4"><span class="text-gray-500">└── </span><span class="text-cyan-400">📖 README.md</span> <span class="text-gray-500 ml-4"># Documentation</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Contributing Section -->
-        <section class="py-16 px-4 section" id="contributing">
+        <section class="py-20 px-6" id="contributing">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-4 text-center flex items-center justify-center gap-3">
-                    <span class="text-4xl">🤝</span> Contributing
+                <h2 class="section-title">
+                    <span>🤝</span> Contributing
                 </h2>
-                <div class="text-center mb-8">
-                    <img src="https://user-images.githubusercontent.com/74038190/212284145-bf2c01a8-c448-4f1a-b911-996024c84606.gif" class="w-full max-w-md mx-auto rounded-xl" alt="contributing">
+                <div class="text-center mb-12">
+                    <img src="https://user-images.githubusercontent.com/74038190/212284145-bf2c01a8-c448-4f1a-b911-996024c84606.gif" class="max-w-lg w-full mx-auto rounded-xl" alt="contributing">
                 </div>
                 
-                <p class="text-center text-gray-300 mb-8">Contributions are welcome! 🎉</p>
+                <p class="text-center text-gray-300 text-xl mb-10">Contributions are welcome! 🎉</p>
                 
-                <div class="space-y-4 max-w-xl mx-auto">
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all">
-                        <span class="bg-purple-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</span>
-                        <div><span class="text-2xl mr-2">🍴</span>Fork the repository</div>
+                <div class="space-y-4 max-w-2xl mx-auto">
+                    <div class="card p-6 flex items-start gap-5">
+                        <span class="step-number text-base">1</span>
+                        <div>
+                            <span class="text-2xl mr-3">🍴</span>
+                            <span class="font-semibold text-white">Fork the repository</span>
+                        </div>
                     </div>
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all">
-                        <span class="bg-purple-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">2</span>
-                        <div><span class="text-2xl mr-2">🌿</span>Create your feature branch<br><code class="text-sm text-cyan-400 font-mono">git checkout -b feature/AmazingFeature</code></div>
+                    <div class="card p-6 flex items-start gap-5">
+                        <span class="step-number text-base">2</span>
+                        <div>
+                            <span class="text-2xl mr-3">🌿</span>
+                            <span class="font-semibold text-white">Create your feature branch</span>
+                            <div class="text-cyan-400 font-mono text-sm mt-2">git checkout -b feature/AmazingFeature</div>
+                        </div>
                     </div>
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all">
-                        <span class="bg-purple-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">3</span>
-                        <div><span class="text-2xl mr-2">💾</span>Commit your changes<br><code class="text-sm text-cyan-400 font-mono">git commit -m 'Add some AmazingFeature'</code></div>
+                    <div class="card p-6 flex items-start gap-5">
+                        <span class="step-number text-base">3</span>
+                        <div>
+                            <span class="text-2xl mr-3">💾</span>
+                            <span class="font-semibold text-white">Commit your changes</span>
+                            <div class="text-cyan-400 font-mono text-sm mt-2">git commit -m 'Add some AmazingFeature'</div>
+                        </div>
                     </div>
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all">
-                        <span class="bg-purple-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">4</span>
-                        <div><span class="text-2xl mr-2">📤</span>Push to the branch<br><code class="text-sm text-cyan-400 font-mono">git push origin feature/AmazingFeature</code></div>
+                    <div class="card p-6 flex items-start gap-5">
+                        <span class="step-number text-base">4</span>
+                        <div>
+                            <span class="text-2xl mr-3">📤</span>
+                            <span class="font-semibold text-white">Push to the branch</span>
+                            <div class="text-cyan-400 font-mono text-sm mt-2">git push origin feature/AmazingFeature</div>
+                        </div>
                     </div>
-                    <div class="card rounded-xl p-4 flex items-center gap-4 glow-hover transition-all">
-                        <span class="bg-purple-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">5</span>
-                        <div><span class="text-2xl mr-2">🔃</span>Open a Pull Request</div>
+                    <div class="card p-6 flex items-start gap-5">
+                        <span class="step-number text-base">5</span>
+                        <div>
+                            <span class="text-2xl mr-3">🔃</span>
+                            <span class="font-semibold text-white">Open a Pull Request</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- License Section -->
-        <section class="py-16 px-4 section" id="license">
+        <section class="py-20 px-6" id="license">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-8 flex items-center justify-center gap-3">
-                    <span class="text-4xl">📜</span> License
+                <h2 class="section-title">
+                    <span>📜</span> License
                 </h2>
-                <div class="card rounded-2xl p-8 glow-hover transition-all">
-                    <p class="text-gray-300 mb-4">This project is created for educational purposes.</p>
-                    <span class="badge bg-green-500 text-white text-lg px-6 py-2">License: MIT</span>
+                <div class="card p-12 glow-box">
+                    <p class="text-gray-300 text-xl mb-6">This project is created for educational purposes.</p>
+                    <span class="badge bg-green-600 text-white text-xl px-8 py-3">License: MIT</span>
                 </div>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer class="py-16 px-4 text-center border-t border-cyan-500/20">
-            <h2 class="text-2xl font-bold mb-6 flex items-center justify-center gap-3">
-                <span class="text-3xl">⭐</span> Show Your Support
+        <footer class="py-20 px-6 text-center border-t border-gray-800">
+            <h2 class="text-3xl font-bold mb-8 text-white">
+                <span class="text-4xl">⭐</span> Show Your Support
             </h2>
-            <p class="text-gray-300 mb-8">If you like this project, please give it a ⭐!</p>
+            <p class="text-gray-300 text-xl mb-10">If you like this project, please give it a ⭐!</p>
             
-            <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" class="w-full max-w-3xl mx-auto mb-8" alt="divider">
+            <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" class="divider-img max-w-4xl" alt="divider">
             
-            <h3 class="text-xl font-bold mb-4">📫 Connect with Me</h3>
-            <a href="https://github.com/SudhirDevOps1" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-lg transition-colors mb-8">
+            <h3 class="text-2xl font-bold mb-6 text-white">📫 Connect with Me</h3>
+            <a href="https://github.com/SudhirDevOps1" class="btn-secondary text-lg mb-12 inline-flex">
                 <i class="fab fa-github text-2xl"></i>
                 <span>GitHub</span>
             </a>
             
             <div class="mt-12">
-                <p class="text-gray-400 mb-4">Made with ❤️ by <span class="text-cyan-400 font-bold">Sudhir Kumar</span></p>
-                <img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif" class="w-full max-w-lg mx-auto mb-8 rounded-xl" alt="footer">
-                <p class="text-xl font-bold gradient-text mb-6">⭐ Star this repo if you find it helpful! ⭐</p>
+                <p class="text-gray-400 text-lg mb-6">Made with ❤️ by <span class="text-cyan-400 font-bold">Sudhir Kumar</span></p>
+                <img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif" class="max-w-lg w-full mx-auto mb-10 rounded-xl" alt="footer">
+                <p class="text-2xl font-bold gradient-text mb-8">⭐ Star this repo if you find it helpful! ⭐</p>
                 <img src="https://visitcount.itsvg.in/api?id=SudhirDevOps1&icon=0&color=0" alt="Visitor Count" class="mx-auto">
             </div>
         </footer>
     </main>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" class="fixed bottom-6 right-6 bg-cyan-500 hover:bg-cyan-600 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 pointer-events-none z-50">
+    <button id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script>
-        // Intersection Observer for animations
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        sections.forEach(section => observer.observe(section));
-        
         // Back to top button
         const backToTop = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 500) {
-                backToTop.classList.remove('opacity-0', 'pointer-events-none');
+                backToTop.classList.add('visible');
             } else {
-                backToTop.classList.add('opacity-0', 'pointer-events-none');
+                backToTop.classList.remove('visible');
             }
         });
         
@@ -1329,11 +1126,14 @@
         
         // Copy code functionality
         function copyCode(btn) {
-            const code = btn.previousElementSibling.textContent;
+            const codeBlock = btn.parentElement;
+            const code = codeBlock.querySelector('code').textContent;
             navigator.clipboard.writeText(code).then(() => {
                 btn.textContent = '✓ Copied!';
+                btn.style.background = '#10b981';
                 setTimeout(() => {
                     btn.textContent = '📋 Copy';
+                    btn.style.background = '';
                 }, 2000);
             });
         }
