@@ -1,0 +1,9 @@
+# Dependencies for System Utility App
+os-sys
+psutil
+pathlib
+argparse
+datetime
+importlib-metadata
+pyperclip
+winshell
